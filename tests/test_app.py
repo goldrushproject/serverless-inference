@@ -1,11 +1,22 @@
 import unittest
 import json
+import base64
+import pickle
 from app.app import lambda_handler
 
 class TestApp(unittest.TestCase):
     def test_app(self):
-        with open('./tests/assessment_test_event.json') as f:
-            test_event = json.load(f)
+        with open('tests/trained_model.pkl', 'rb') as f:
+            model = pickle.load(f)
+        model_serialized = base64.b64encode(pickle.dumps(model)).decode('utf-8')
+
+        test_event = {
+            "max_time_window": 2,
+            "ticker_symbol": "AAPL",
+            "interval": "1h",
+            "model": model_serialized,
+            "future_time_window": 5
+        }
         context = {}
         response = lambda_handler(test_event, context)
         response_body = json.loads(response['body'])
