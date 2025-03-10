@@ -11,11 +11,10 @@ class TestApp(unittest.TestCase):
         model_serialized = base64.b64encode(pickle.dumps(model)).decode('utf-8')
 
         test_event = {
-            "max_time_window": 2,
             "ticker_symbol": "AAPL",
             "interval": "1h",
+            "prediction_time_window": 5,
             "model": model_serialized,
-            "future_time_window": 5
         }
         context = {}
         response = lambda_handler(test_event, context)
@@ -24,7 +23,6 @@ class TestApp(unittest.TestCase):
         print("Predicted Prices:", response_body['predicted_prices'])
         
         self.assertEqual(response["statusCode"], 200)
-        self.assertIn("Hello from Lambda!", response_body["message"])
 
 if __name__ == "__main__":
     unittest.main()
