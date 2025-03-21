@@ -11,10 +11,12 @@ class TestApp(unittest.TestCase):
         model_serialized = base64.b64encode(pickle.dumps(model)).decode('utf-8')
 
         test_event = {
-            "ticker_symbol": "AAPL",
-            "interval": "1m",
-            "prediction_time_window": 5,
             "model": model_serialized,
+            "parameters": {
+                "ticker_symbol": "AAPL",
+                "prediction_time_window": 10,
+                "interval": "1d"
+            }
         }
         context = {}
         response = lambda_handler(test_event, context)

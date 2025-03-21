@@ -8,10 +8,11 @@ import base64
 def lambda_handler(event, context):
 
     # Extract parameters
-    ticker_symbol = event.get("ticker_symbol", "AAPL")
-    prediction_time_window = event.get("prediction_time_window", 5)
-    interval = event.get("interval", "1h")
     model_serialized = event.get("model", None)
+    model_parameters = event.get("parameters", None)
+    ticker_symbol = model_parameters['ticker_symbol']
+    prediction_time_window = model_parameters['prediction_time_window']
+    interval = model_parameters['interval']
 
     # Deserialize the model
     if model_serialized:
