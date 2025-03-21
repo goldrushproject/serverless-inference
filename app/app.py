@@ -34,5 +34,12 @@ def lambda_handler(event, context):
     # Return a response
     return {
         "statusCode": 200,
-        "body": future_prices.tolist()
+        "body": json.dumps(
+            {
+                "ticker_symbol": ticker_symbol,
+                "prediction_time_window": prediction_time_window,
+                "interval": interval,
+                "predicted_prices": future_prices.tolist()
+            }
+        ),
     }
