@@ -9,10 +9,10 @@ def lambda_handler(event, context):
 
     # Extract parameters
     model_serialized = event.get("model", None)
-    model_parameters = event.get("parameters", None)
-    ticker_symbol = model_parameters['ticker_symbol']
-    prediction_time_window = model_parameters['prediction_time_window']
-    interval = model_parameters['interval']
+    parameters = event.get("parameters", None)
+    ticker_symbol = parameters['ticker_symbol']
+    prediction_time_window = parameters['prediction_time_window']
+    interval = parameters['interval']
 
     # Deserialize the model
     if model_serialized:
