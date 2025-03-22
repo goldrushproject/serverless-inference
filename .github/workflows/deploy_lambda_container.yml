@@ -4,12 +4,15 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'lambda_app/**'
+      - 'shared/**'
 
 env:
   AWS_REGION: us-west-2
   LAMBDA_FUNCTION_NAME: Serverless-Inference
   AWS_ECR_REPO: lambdas/serverless-inference
-  AWS_ROLE_TO_ASSUME: arn:aws:iam::650251730947:role/gitactions-lambda-role
+  AWS_ROLE_TO_ASSUME: arn:aws:iam::650251730947:role/GitActionsLambdaRole
 
 permissions:
   id-token: write
@@ -44,7 +47,7 @@ jobs:
         REPOSITORY: ${{ env.AWS_ECR_REPO }}
         IMAGE_TAG: latest
       run: |
-        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ./app
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ./lambda_app
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
     - name: Check if Lambda function exists
