@@ -2,7 +2,8 @@ import unittest
 import json
 import base64
 import pickle
-from app.app import lambda_handler
+from lambda_app.app import lambda_handler
+
 
 class TestApp(unittest.TestCase):
     def test_app(self):

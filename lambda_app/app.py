@@ -1,5 +1,5 @@
 import json
-from logic import inference
+from shared.logic import inference
 
 def lambda_handler(event, context):
     model_serialized = event["model"]
