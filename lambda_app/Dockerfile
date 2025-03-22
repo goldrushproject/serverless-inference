@@ -1,7 +1,7 @@
 FROM public.ecr.aws/lambda/python:3.12
 
 # Print the current working directory
-RUN pwd
+RUN echo "Current directory: $(pwd)"
 
 # Copy requirements.txt from the shared directory
 COPY shared/requirements.txt ${LAMBDA_TASK_ROOT}

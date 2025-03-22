@@ -1,7 +1,7 @@
 FROM python:3.12-slim
 
 # Print the current working directory
-RUN pwd
+RUN echo "Current directory: $(pwd)"
 
 # Copy requirements.txt from the shared directory
 COPY shared/requirements.txt .
