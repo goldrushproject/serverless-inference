@@ -48,7 +48,7 @@ jobs:
         REPOSITORY: ${{ env.AWS_ECR_REPO }}
         IMAGE_TAG: latest
       run: |
-        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ./lambda_app
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f Dockerfile.lambda .
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
     - name: Check if Lambda function exists

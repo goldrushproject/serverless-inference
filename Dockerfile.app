@@ -1,8 +1,5 @@
 FROM python:3.12-slim
 
-# Print the current working directory
-RUN echo "Current directory: $(pwd)"
-
 # Copy requirements.txt from the shared directory
 COPY shared/requirements.txt .
 
@@ -10,8 +7,8 @@ COPY shared/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy function code and the additional logic file from the shared directory
-COPY app.py .
-COPY shared/logic.py ./shared/
+COPY container_app/app.py .
+COPY shared/logic.py ./shared
 
 # Expose the port your application will run on (if applicable)
 EXPOSE 8080

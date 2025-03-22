@@ -48,5 +48,5 @@ jobs:
         REPOSITORY: ${{ env.AWS_ECR_REPO }}
         IMAGE_TAG: latest
       run: |
-        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ./container_app
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f Dockerfile.app .
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
