@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - '.github/workflows/deploy_app_container.yml'
       - 'container_app/**'
       - 'shared/**'
 

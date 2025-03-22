@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from shared.logic import inference
 
-# trigger
 app = Flask(__name__)
 
 @app.route('/', methods=['POST'])

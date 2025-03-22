@@ -2,7 +2,6 @@ import json
 from shared.logic import inference
 
 def lambda_handler(event, context):
-    # trigger
     model_serialized = event["model"]
     parameters = event["parameters"]
     ticker_symbol = parameters["ticker_symbol"]

@@ -1,5 +1,8 @@
 FROM public.ecr.aws/lambda/python:3.12
 
+# Set the working directory
+WORKDIR /lambda_app
+
 # Copy requirements.txt from the shared directory
 COPY ../shared/requirements.txt ${LAMBDA_TASK_ROOT}
 

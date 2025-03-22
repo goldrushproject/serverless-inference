@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - '.github/workflows/deploy_lambda_container.yml'
       - 'lambda_app/**'
       - 'shared/**'
 
