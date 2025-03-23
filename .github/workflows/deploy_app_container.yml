@@ -13,7 +13,7 @@ on:
 env:
   AWS_REGION: us-west-2
   AWS_ECR_REPO: apps/serverless-inference
-  AWS_ROLE_TO_ASSUME: arn:aws:iam::650251730947:role/GitActionsLambdaRole
+  AWS_ROLE_TO_ASSUME: arn:aws:iam::650251730947:role/GitActionsECSRole
 
 permissions:
   id-token: write
