@@ -8,6 +8,7 @@ on:
       - '.github/workflows/deploy_app_container.yml'
       - 'container_app/**'
       - 'shared/**'
+      - 'Dockerfile.app'
 
 env:
   AWS_REGION: us-west-2
