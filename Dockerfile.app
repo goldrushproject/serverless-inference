@@ -8,7 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy function code and logic to container
 COPY container_app/app.py .
-COPY --exclude=__pycache__ shared/ ./shared/
+COPY shared/ ./shared/
 
 # Expose the port your application will run on (if applicable)
 EXPOSE 8080

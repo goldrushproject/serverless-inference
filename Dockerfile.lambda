@@ -8,7 +8,7 @@ RUN pip install -r requirements.txt
 
 # Copy function code and logic to container
 COPY lambda_app/app.py ${LAMBDA_TASK_ROOT}
-COPY --exclude=__pycache__ shared/ ${LAMBDA_TASK_ROOT}/shared/
+COPY shared/ ${LAMBDA_TASK_ROOT}/shared/
 
 # Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
 CMD [ "app.lambda_handler" ]

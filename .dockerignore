@@ -1,0 +1,45 @@
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+
+# Ignore virtual environments
+venv/
+env/
+*.env
+*.venv
+
+# Ignore local configuration files
+*.flaskenv
+*.env
+*.local
+
+# Ignore build and deployment artifacts
+build/
+dist/
+*.egg-info
+
+# Ignore Docker-related files
+Dockerfile*
+.dockerignore
+
+# Ignore test and coverage files
+tests/
+*.log
+*.pot
+*.po
+*.mo
+
+# Ignore IDE/editor configuration files
+.vscode/
+.idea/
+*.swp
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore other unwanted files
+*.bak
+*.tmp
