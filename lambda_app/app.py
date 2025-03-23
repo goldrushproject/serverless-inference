@@ -1,4 +1,6 @@
 import json
+import pickle
+import base64
 from shared.logic import inference
 
 def lambda_handler(event, context):
@@ -8,7 +10,10 @@ def lambda_handler(event, context):
     prediction_time_window = parameters["prediction_time_window"]
     interval = parameters["interval"]
 
-    result = inference(model_serialized, ticker_symbol, prediction_time_window, interval)
+    # Deserialize the model
+    model = pickle.loads(base64.b64decode(model_serialized))
+
+    result = inference(model, ticker_symbol, prediction_time_window, interval)
 
     return {
         "statusCode": 200,
