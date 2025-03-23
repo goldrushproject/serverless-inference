@@ -10,5 +10,7 @@ COPY shared/logic.py ./shared/
 # Expose the port your application will run on (if applicable)
 EXPOSE 8080
 
+# Trigger workflow
+
 # Set the entry point for the container
 CMD ["python", "app.py"]
