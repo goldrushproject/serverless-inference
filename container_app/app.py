@@ -10,15 +10,15 @@ app = Flask(__name__)
 s3_client = boto3.client("s3")
 BUCKET_NAME = "goldrush-main-12705"
 
-@app.route('/', methods=['POST'])
+@app.route('/pedict', methods=['POST'])
 def predict():
     try:
         data = request.get_json()
-        model_key = data["key"]
-        parameters = data["parameters"]
-        ticker_symbol = parameters["ticker_symbol"]
-        prediction_time_window = parameters["prediction_time_window"]
-        interval = parameters["interval"]
+        state_payload = data['StatePayload']
+        model_key = state_payload["key"]
+        ticker_symbol = state_payload["ticker_symbol"]
+        prediction_time_window = state_payload["prediction_time_window"]
+        interval = state_payload["interval"]
 
         # Download model from S3
         model_path = f"/tmp/{model_key}"
