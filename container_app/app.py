@@ -10,7 +10,7 @@ app = Flask(__name__)
 s3_client = boto3.client("s3")
 BUCKET_NAME = "goldrush-main-12705"
 
-@app.route('/pedict', methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
     try:
         data = request.get_json()
