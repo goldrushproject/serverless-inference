@@ -7,33 +7,36 @@ from shared.logic import inference
 
 app = Flask(__name__)
 
+# Enable development mode for auto-reloading
+# app.config["DEBUG"] = True
+
 s3_client = boto3.client("s3")
 BUCKET_NAME = "goldrush-main-12705"
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    data = request.get_json()
+    state_payload = data['StatePayload']
+    model_key = state_payload["key"]
+    ticker_symbol = state_payload["ticker_symbol"]
+    prediction_time_window = state_payload["prediction_time_window"]
+    interval = state_payload["interval"]
+
+    # Download model from S3 and keep it in memory
     try:
-        data = request.get_json()
-        state_payload = data['StatePayload']
-        model_key = state_payload["key"]
-        ticker_symbol = state_payload["ticker_symbol"]
-        prediction_time_window = state_payload["prediction_time_window"]
-        interval = state_payload["interval"]
-
-        # Download model from S3
-        model_path = f"/tmp/{model_key}"
-        s3_client.download_file(BUCKET_NAME, model_key, model_path)
-
-        # Load the model
-        with open(model_path, "rb") as model_file:
-            model = pickle.loads(base64.b64decode(model_file))
-
-        # Run inference
-        result = inference(model, ticker_symbol, prediction_time_window, interval)
-
-        return jsonify(result), 200
+        response = s3_client.get_object(Bucket=BUCKET_NAME, Key=model_key)
+        model_data = response['Body'].read()
+        model = pickle.loads(base64.b64decode(model_data))
+    except s3_client.exceptions.NoSuchKey:
+        return jsonify({"error": "Model file not found in S3"}), 404
     except Exception as e:
-        return jsonify({"error": str(e)}), 400
+        return jsonify({"error": f"Failed to download or load model: {str(e)}"}), 500
+    print(f"Model loaded into memory")
+
+    # Run inference
+    result = inference(model, ticker_symbol, prediction_time_window, interval)
+
+    return jsonify(result), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
