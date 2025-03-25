@@ -36,7 +36,7 @@
         }
     ],
     "family": "serverless-inference-fargate-task",
-    "taskRoleArn": "arn:aws:iam::650251730947:role/ECSTaskExecutionRole",
+    "taskRoleArn": "arn:aws:iam::650251730947:role/ECSFargateS3AccessRole",
     "executionRoleArn": "arn:aws:iam::650251730947:role/ECSTaskExecutionRole",
     "networkMode": "awsvpc",
     "revision": 1,

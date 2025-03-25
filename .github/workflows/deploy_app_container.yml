@@ -55,7 +55,7 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: serverless-inference-fargate-task-definition.json 
+        task-definition: container_app/serverless-inference-fargate-task-definition.json 
         container-name: ServerlessInferenceFargateContainer
         image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPO }}:latest    
     

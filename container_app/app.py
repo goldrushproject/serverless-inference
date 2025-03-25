@@ -31,7 +31,6 @@ def predict():
         return jsonify({"error": "Model file not found in S3"}), 404
     except Exception as e:
         return jsonify({"error": f"Failed to download or load model: {str(e)}"}), 500
-    print(f"Model loaded into memory")
 
     # Run inference
     result = inference(model, ticker_symbol, prediction_time_window, interval)
