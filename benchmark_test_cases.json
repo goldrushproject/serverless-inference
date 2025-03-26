@@ -1,7 +1,7 @@
 [
   {
-    "test_name": "Normal Load - API Gateway",
-    "description": "Benchmark under normal load for API Gateway",
+    "test_name": "Normal Load - Event Driven Serverless",
+    "description": "Benchmark under normal load for event driven serverless deployment on Step Functions + Lambda",
     "task_count": 2,
     "concurrency": 50,
     "region": "us-west-2",
@@ -21,8 +21,8 @@
     }
   },
   {
-    "test_name": "High Throughput - API Gateway",
-    "description": "Benchmark under constant high throughput for API Gateway",
+    "test_name": "High Throughput - Event Driven Serverless",
+    "description": "Benchmark under constant high throughput for event driven serverless deployment on Step Functions + Lambda",
     "task_count": 5,
     "concurrency": 200,
     "region": "us-west-2",
@@ -42,8 +42,8 @@
     }
   },
   {
-    "test_name": "Spike Load - API Gateway",
-    "description": "Benchmark under spiking throughput for API Gateway",
+    "test_name": "Spike Load - Event Driven Serverless",
+    "description": "Benchmark under spiking throughput for event driven serverless deployment on Step Functions + Lambda",
     "task_count": 3,
     "concurrency": 100,
     "region": "us-west-2",
@@ -63,8 +63,8 @@
     }
   },
   {
-    "test_name": "Normal Load - App Runner",
-    "description": "Benchmark under normal load for App Runner",
+    "test_name": "Normal Load - Persistent Containerized Serverless",
+    "description": "Benchmark under normal load for containerized serverless deployment on App Runner",
     "task_count": 2,
     "concurrency": 50,
     "region": "us-west-2",
@@ -84,8 +84,8 @@
     }
   },
   {
-    "test_name": "High Throughput - App Runner",
-    "description": "Benchmark under constant high throughput for App Runner",
+    "test_name": "High Throughput - Persistent Containerized Serverless",
+    "description": "Benchmark under constant high throughput for containerized serverless deployment on App Runner",
     "task_count": 5,
     "concurrency": 200,
     "region": "us-west-2",
@@ -105,8 +105,8 @@
     }
   },
   {
-    "test_name": "Spike Load - App Runner",
-    "description": "Benchmark under spiking throughput for App Runner",
+    "test_name": "Spike Load - Persistent Containerized Serverless",
+    "description": "Benchmark under spiking throughput for containerized serverless deployment on App Runner",
     "task_count": 3,
     "concurrency": 100,
     "region": "us-west-2",
@@ -126,14 +126,14 @@
     }
   },
   {
-    "test_name": "Normal Load - ALB",
-    "description": "Benchmark under normal load for ALB",
+    "test_name": "Normal Load - Containerized Serverful",
+    "description": "Benchmark under normal load for containerized serverful deployment on ECS + EC2",
     "task_count": 2,
     "concurrency": 50,
     "region": "us-west-2",
     "ramp_up": 2,
     "hold_for": 10,
-    "target_url": "http://ServerlessInferenceALB-498835618.us-west-2.elb.amazonaws.com/predict",
+    "target_url": "http://ServerfulInferenceALB-974980636.us-west-2.elb.amazonaws.com:8080/predict",
     "http_method": "POST",
     "body_payload": {
       "StatePayload": {
@@ -147,14 +147,14 @@
     }
   },
   {
-    "test_name": "High Throughput - ALB",
-    "description": "Benchmark under constant high throughput for ALB",
+    "test_name": "High Throughput - Containerized Serverful",
+    "description": "Benchmark under constant high throughput for containerized serverful deployment on ECS + EC2",
     "task_count": 5,
     "concurrency": 200,
     "region": "us-west-2",
     "ramp_up": 5,
     "hold_for": 20,
-    "target_url": "http://ServerlessInferenceALB-498835618.us-west-2.elb.amazonaws.com/predict",
+    "target_url": "http://ServerfulInferenceALB-974980636.us-west-2.elb.amazonaws.com:8080/predict",
     "http_method": "POST",
     "body_payload": {
       "StatePayload": {
@@ -168,14 +168,14 @@
     }
   },
   {
-    "test_name": "Spike Load - ALB",
-    "description": "Benchmark under spiking throughput for ALB",
+    "test_name": "Spike Load - Containerized Serverful",
+    "description": "Benchmark under spiking throughput for containerized serverful deployment on ECS + EC2",
     "task_count": 3,
     "concurrency": 100,
     "region": "us-west-2",
     "ramp_up": 1,
     "hold_for": 5,
-    "target_url": "http://ServerlessInferenceALB-498835618.us-west-2.elb.amazonaws.com/predict",
+    "target_url": "http://ServerfulInferenceALB-974980636.us-west-2.elb.amazonaws.com:8080/predict",
     "http_method": "POST",
     "body_payload": {
       "StatePayload": {
