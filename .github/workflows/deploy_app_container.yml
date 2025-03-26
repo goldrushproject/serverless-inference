@@ -55,14 +55,14 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: container_app/serverless-inference-fargate-task-definition.json 
-        container-name: ServerlessInferenceFargateContainer
+        task-definition: container_app/serverful-inference-ec2-task.json 
+        container-name: ServerfulInferenceEC2Container
         image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPO }}:latest    
     
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v2
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: ServerlessInferenceFargateService
-        cluster: GoldRushCluster
+        service: ServerfulInferenceEC2Service
+        cluster: GoldRushCluster2
         wait-for-service-stability: true

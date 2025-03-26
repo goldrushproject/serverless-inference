@@ -1,0 +1,191 @@
+[
+  {
+    "test_name": "Normal Load - API Gateway",
+    "description": "Benchmark under normal load for API Gateway",
+    "task_count": 2,
+    "concurrency": 50,
+    "region": "us-west-2",
+    "ramp_up": 2,
+    "hold_for": 10,
+    "target_url": "https://9v4savou7h.execute-api.us-west-2.amazonaws.com/dev/predict",
+    "http_method": "POST",
+    "body_payload": {
+      "StatePayload": {
+        "ticker_symbol": "AAPL",
+        "interval": "1h",
+        "sample_time_window": 3,
+        "prediction_time_window": 6,
+        "user": "default",
+        "key": "models/default/AAPL/114514.pkl"
+      }
+    }
+  },
+  {
+    "test_name": "High Throughput - API Gateway",
+    "description": "Benchmark under constant high throughput for API Gateway",
+    "task_count": 5,
+    "concurrency": 200,
+    "region": "us-west-2",
+    "ramp_up": 5,
+    "hold_for": 20,
+    "target_url": "https://9v4savou7h.execute-api.us-west-2.amazonaws.com/dev/predict",
+    "http_method": "POST",
+    "body_payload": {
+      "StatePayload": {
+        "ticker_symbol": "TSLA",
+        "interval": "1m",
+        "sample_time_window": 5,
+        "prediction_time_window": 10,
+        "user": "default",
+        "key": "models/default/TSLA/114514.pkl"
+      }
+    }
+  },
+  {
+    "test_name": "Spike Load - API Gateway",
+    "description": "Benchmark under spiking throughput for API Gateway",
+    "task_count": 3,
+    "concurrency": 100,
+    "region": "us-west-2",
+    "ramp_up": 1,
+    "hold_for": 5,
+    "target_url": "https://9v4savou7h.execute-api.us-west-2.amazonaws.com/dev/predict",
+    "http_method": "POST",
+    "body_payload": {
+      "StatePayload": {
+        "ticker_symbol": "MSFT",
+        "interval": "1d",
+        "sample_time_window": 7,
+        "prediction_time_window": 4,
+        "user": "default",
+        "key": "models/default/MSFT/114514.pkl"
+      }
+    }
+  },
+  {
+    "test_name": "Normal Load - App Runner",
+    "description": "Benchmark under normal load for App Runner",
+    "task_count": 2,
+    "concurrency": 50,
+    "region": "us-west-2",
+    "ramp_up": 2,
+    "hold_for": 10,
+    "target_url": "https://9jnpz3ttjp.us-west-2.awsapprunner.com/predict",
+    "http_method": "POST",
+    "body_payload": {
+      "StatePayload": {
+        "ticker_symbol": "GOOG",
+        "interval": "1d",
+        "sample_time_window": 6,
+        "prediction_time_window": 8,
+        "user": "default",
+        "key": "models/default/GOOG/114514.pkl"
+      }
+    }
+  },
+  {
+    "test_name": "High Throughput - App Runner",
+    "description": "Benchmark under constant high throughput for App Runner",
+    "task_count": 5,
+    "concurrency": 200,
+    "region": "us-west-2",
+    "ramp_up": 5,
+    "hold_for": 20,
+    "target_url": "https://9jnpz3ttjp.us-west-2.awsapprunner.com/predict",
+    "http_method": "POST",
+    "body_payload": {
+      "StatePayload": {
+        "ticker_symbol": "NVDA",
+        "interval": "1h",
+        "sample_time_window": 4,
+        "prediction_time_window": 7,
+        "user": "default",
+        "key": "models/default/NVDA/114514.pkl"
+      }
+    }
+  },
+  {
+    "test_name": "Spike Load - App Runner",
+    "description": "Benchmark under spiking throughput for App Runner",
+    "task_count": 3,
+    "concurrency": 100,
+    "region": "us-west-2",
+    "ramp_up": 1,
+    "hold_for": 5,
+    "target_url": "https://9jnpz3ttjp.us-west-2.awsapprunner.com/predict",
+    "http_method": "POST",
+    "body_payload": {
+      "StatePayload": {
+        "ticker_symbol": "AMZN",
+        "interval": "1m",
+        "sample_time_window": 5,
+        "prediction_time_window": 9,
+        "user": "default",
+        "key": "models/default/AMZN/114514.pkl"
+      }
+    }
+  },
+  {
+    "test_name": "Normal Load - ALB",
+    "description": "Benchmark under normal load for ALB",
+    "task_count": 2,
+    "concurrency": 50,
+    "region": "us-west-2",
+    "ramp_up": 2,
+    "hold_for": 10,
+    "target_url": "http://ServerlessInferenceALB-498835618.us-west-2.elb.amazonaws.com/predict",
+    "http_method": "POST",
+    "body_payload": {
+      "StatePayload": {
+        "ticker_symbol": "NFLX",
+        "interval": "1h",
+        "sample_time_window": 3,
+        "prediction_time_window": 5,
+        "user": "default",
+        "key": "models/default/NFLX/114514.pkl"
+      }
+    }
+  },
+  {
+    "test_name": "High Throughput - ALB",
+    "description": "Benchmark under constant high throughput for ALB",
+    "task_count": 5,
+    "concurrency": 200,
+    "region": "us-west-2",
+    "ramp_up": 5,
+    "hold_for": 20,
+    "target_url": "http://ServerlessInferenceALB-498835618.us-west-2.elb.amazonaws.com/predict",
+    "http_method": "POST",
+    "body_payload": {
+      "StatePayload": {
+        "ticker_symbol": "META",
+        "interval": "1m",
+        "sample_time_window": 6,
+        "prediction_time_window": 10,
+        "user": "default",
+        "key": "models/default/META/114514.pkl"
+      }
+    }
+  },
+  {
+    "test_name": "Spike Load - ALB",
+    "description": "Benchmark under spiking throughput for ALB",
+    "task_count": 3,
+    "concurrency": 100,
+    "region": "us-west-2",
+    "ramp_up": 1,
+    "hold_for": 5,
+    "target_url": "http://ServerlessInferenceALB-498835618.us-west-2.elb.amazonaws.com/predict",
+    "http_method": "POST",
+    "body_payload": {
+      "StatePayload": {
+        "ticker_symbol": "IBM",
+        "interval": "1d",
+        "sample_time_window": 7,
+        "prediction_time_window": 6,
+        "user": "default",
+        "key": "models/default/IBM/114514.pkl"
+      }
+    }
+  }
+]
