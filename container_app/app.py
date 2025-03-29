@@ -22,9 +22,11 @@ def predict():
     data = request.get_json()
     state_payload = data['StatePayload']
     model_key = state_payload["key"]
-    ticker_symbol = state_payload["ticker_symbol"]
-    prediction_time_window = state_payload["prediction_time_window"]
-    interval = state_payload["interval"]
+    parameters = {
+        "ticker_symbol": state_payload["ticker_symbol"],
+        "prediction_time_window": state_payload["prediction_time_window"],
+        "interval": state_payload["interval"]
+    }
 
     # Download model from S3 and keep it in memory
     try:
@@ -37,7 +39,7 @@ def predict():
         return jsonify({"error": f"Failed to download or load model: {str(e)}"}), 500
 
     # Run inference
-    result = inference(model, ticker_symbol, prediction_time_window, interval)
+    result = inference(model, parameters)
 
     return jsonify(result), 200
 

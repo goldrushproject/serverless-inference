@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-def inference(model, ticker_symbol, prediction_time_window, interval):
+def inference(model, parameters):
     """
     Deserialize the model, compute future times, and predict stock prices.
 
@@ -15,6 +15,10 @@ def inference(model, ticker_symbol, prediction_time_window, interval):
         dict: Dictionary containing ticker symbol, prediction window, interval,
               and a list of predicted prices.
     """
+    # Extract parameters
+    ticker_symbol = parameters["ticker_symbol"]
+    prediction_time_window = parameters["prediction_time_window"]
+    interval = parameters["interval"]
 
     # Calculate the step size based on the interval
     interval_mapping = {"1m": 1, "1h": 60, "1d": 1440}
