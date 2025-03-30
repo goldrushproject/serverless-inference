@@ -12,8 +12,9 @@ class TestApp(unittest.TestCase):
         model_serialized = base64.b64encode(pickle.dumps(model)).decode('utf-8')
 
         test_event = {
-            "model": model_serialized,
-            "parameters": {
+            "StatePayload": {
+                "key": "models/default/TSLA/114514.pkl",
+                "model": None,
                 "ticker_symbol": "TSLA",
                 "prediction_time_window": 1,
                 "interval": "1m"
@@ -22,8 +23,8 @@ class TestApp(unittest.TestCase):
         context = {}
         response = lambda_handler(test_event, context)
         response_body = json.loads(response['body'])
-        
-        with open('sample_predicted_prices.json', 'w') as f:
+
+        with open('predicted_data.json', 'w') as f:
             # print(response_body['predicted_prices'])
             json.dump(response_body['predicted_prices'], f)
         
