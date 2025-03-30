@@ -1,5 +1,6 @@
 pandas
 numpy
 flask
+statsmodels
+scikit-learn
 boto3
-xgboost
