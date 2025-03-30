@@ -14,10 +14,10 @@ class TestApp(unittest.TestCase):
         test_event = {
             "model": model_serialized,
             "parameters": {
-                "ticker_symbol": "AAPL",
-                "prediction_time_window": 10,
-                "interval": "1d"
-            }
+                "ticker_symbol": "TSLA",
+                "prediction_time_window": 1,
+                "interval": "1m"
+            },
         }
         context = {}
         response = lambda_handler(test_event, context)
