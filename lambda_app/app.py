@@ -26,8 +26,13 @@ def lambda_handler(event, context):
     else:
         print("Loading model from S3")
         # Load the model from S3
-        model_key = state_payload["key"]
-            # Download model from S3 and keep it in memory
+        try:
+            model_key = state_payload["key"]
+        except KeyError:
+            print("Model key not found in state payload, trying to find it in TrainData")
+            model_key = event['TrainData']['key']
+        
+        # Download model from S3 and keep it in memory
         try:
             response = s3_client.get_object(Bucket=BUCKET_NAME, Key=model_key)
             model_serialized = response['Body'].read()
