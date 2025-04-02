@@ -29,8 +29,8 @@ def lambda_handler(event, context):
         try:
             model_key = state_payload["key"]
         except KeyError:
-            print("Model key not found in state payload, trying to find it in TrainData")
-            model_key = event['TrainData']['key']
+            print("Model key not found in state payload, trying to find it in event")
+            model_key = event['key']
         
         # Download model from S3 and keep it in memory
         try:
