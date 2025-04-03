@@ -25,8 +25,8 @@ class TestApp(unittest.TestCase):
         response_body = json.loads(response['body'])
 
         with open('predicted_data.json', 'w') as f:
-            # print(response_body['predicted_prices'])
-            json.dump(response_body['predicted_prices'], f)
+            print(response_body)
+            json.dump(response_body, f)
         
         self.assertEqual(response["statusCode"], 200)
 
